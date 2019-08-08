@@ -1,23 +1,21 @@
-### React Component Code Review
+//This is a Child component whic will show the Items in a List formate.
 
-- What does the following component do?
-- Are there any problems with it? If so, what are they?
-- Are there any improvements/changes you would make?
+//You have to define super(props) inside constructor.Without super you can't access the props in side the state.
 
-```jsx
 import React from 'react'
 
 class SomeListComponent extends React.Component {
   constructor (props) {
+	super(props); //without super you can't access the props in side the state.
     this.state = { items: props.items }
   }
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.items !== this.props.items
+    return nextProps.items !== this.props.items //if the previous state items is not equal to the current state items,then render the component.
   }
 
   handleClick (index) {
-    this.props.onClick(index)
+    this.props.onClick(index) // this wiil call the onClick event which is define inside the parent component.Here you will get the Index of the every list element when you click on the list of element.
   }
 
   renderElement (item, index) {
@@ -34,4 +32,3 @@ class SomeListComponent extends React.Component {
 }
 
 export default SomeListComponent
-```
